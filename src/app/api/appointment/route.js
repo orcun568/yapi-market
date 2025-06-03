@@ -1,7 +1,7 @@
 // src/app/api/appointment/route.js
 
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/options"; // Auth ayarlarının yolu
+import { authOptions } from "../auth/[...nextauth]/route"; // Auth ayarlarının yolu
 import prisma from "@/lib/prisma"; // prisma client dosyanın yolu
 import { NextResponse } from "next/server";
 
