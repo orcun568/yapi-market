@@ -2,6 +2,7 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -61,12 +62,12 @@ export default function LoginPage() {
         </form>
         <div className="mt-8 text-center w-full">
           <span className="text-green-600 text-lg">Hesabınız yok mu? </span>
-          <a
+          <Link
             href="/register"
             className="text-green-600 hover:underline font-semibold text-lg"
           >
             Kayıt Ol
-          </a>
+          </Link>
         </div>
       </div>
     </div>

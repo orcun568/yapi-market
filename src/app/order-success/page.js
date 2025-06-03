@@ -28,7 +28,7 @@ export default function OrderSuccess() {
                     <p className="text-gray-700 mb-6 text-center">
                         Teşekkür ederiz. Siparişiniz başarıyla oluşturuldu.
                     </p>
-                    <Link href="/">Anasayfa</Link>
+                    <Link href="/" className="text-green-600">Anasayfa</Link>
                 </div>
             </div>
         </div>

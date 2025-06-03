@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import SignOutButton from "../../../components/SignOutButton";
 import Navbar from "../../../components/Navbar";
+import Link from "next/link";
 
 export default function AppointmentsPage() {
   const [appointments, setAppointments] = useState([]);
@@ -30,10 +31,10 @@ return (
             <aside className="w-64 bg-white p-6 shadow-lg flex flex-col h-screen">
                 <h2 className="text-xl font-bold mb-6 text-green-600">Menü</h2>
                 <nav className="flex flex-col space-y-4 flex-1">
-                    <a href="/profile" className="text-gray-700 hover:text-green-600">Profilim</a>
-                    <a href="/order-list" className="text-gray-700 hover:text-green-600">Siparişlerim</a>
-                    <a href="/appointment-list" className="text-gray-700 hover:text-green-600">Randevularım</a>
-                    <a href="/change-password" className="text-gray-700 hover:text-green-600">Şifre Yenileme</a>
+                    <Link href="/profile" className="text-gray-700 hover:text-green-600">Profilim</Link>
+                    <Link href="/order-list" className="text-gray-700 hover:text-green-600">Siparişlerim</Link>
+                    <Link href="/appointment-list" className="text-gray-700 hover:text-green-600">Randevularım</Link>
+                    <Link href="/change-password" className="text-gray-700 hover:text-green-600">Şifre Yenileme</Link>
                 </nav>
                 <SignOutButton />
             </aside>

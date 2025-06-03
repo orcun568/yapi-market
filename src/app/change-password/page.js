@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import Navbar from '../../../components/Navbar';
 import SignOutButton from '../../../components/SignOutButton';
+import Link from 'next/link';
 
 export default function ChangePasswordPage() {
   const { data: session, status } = useSession();
@@ -69,21 +70,21 @@ export default function ChangePasswordPage() {
         <aside className="w-64 bg-white p-6 shadow-lg flex flex-col min-h-[calc(100vh-64px)] sticky top-16">
           <h2 className="text-xl font-bold mb-6 text-green-600">Menü</h2>
           <nav className="flex flex-col space-y-4 flex-grow">
-            <a href="/profile" className="text-gray-700 hover:text-green-600">
+            <Link href="/profile" className="text-gray-700 hover:text-green-600">
               Profilim
-            </a>
-            <a href="/order-list" className="text-gray-700 hover:text-green-600">
+            </Link>
+            <Link href="/order-list" className="text-gray-700 hover:text-green-600">
               Siparişlerim
-            </a>
-            <a href="/appointment-list" className="text-gray-700 hover:text-green-600">
+            </Link>
+            <Link href="/appointment-list" className="text-gray-700 hover:text-green-600">
               Randevularım
-            </a>
-            <a
+            </Link>
+            <Link
               href="/change-password"
               className="text-gray-700 hover:text-green-600 font-semibold"
             >
               Şifre Yenileme
-            </a>
+            </Link>
           </nav>
           <SignOutButton className="mt-auto" />
         </aside>
