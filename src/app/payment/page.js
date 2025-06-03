@@ -1,11 +1,5 @@
-import React, { Suspense } from "react";
+"use client";
 
-const PaymentClient = React.lazy(() => import("./PaymentClient"));
-
-export default function PaymentPage() {
-  return (
-    <Suspense fallback={<div>Yükleniyor...</div>}>
-      <PaymentClient />
-    </Suspense>
-  );
+export default function TestPage() {
+  return <div>Payment Page Yükleniyor...</div>;
 }
