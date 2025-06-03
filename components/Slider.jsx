@@ -7,11 +7,21 @@ export default function BKSlider() {
   const [slider, setSlider] = useState(null);
   const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    fetch("/api/slider")
-      .then((res) => res.json())
-      .then((data) => setSlider(data));
-  }, []);
+ useEffect(() => {
+  const fetchSlider = async () => {
+    try {
+      const res = await fetch("/api/slider");
+      if (!res.ok) throw new Error("Slider verisi alınamadı.");
+      const data = await res.json();
+      setSlider(data);
+    } catch (error) {
+      console.error("Slider hatası:", error.message);
+    }
+  };
+
+  fetchSlider();
+}, []);
+
 
   useEffect(() => {
     const interval = setInterval(() => {
