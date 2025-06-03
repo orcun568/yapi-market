@@ -26,7 +26,7 @@ export default function UserManagementPage() {
     fetch('/api/users')
       .then((res) => res.json())
       .then((data) => {
-        setUsers(data)
+        setUsers(Array.isArray(data) ? data : [])
         setLoading(false)
       })
   }, [])
