@@ -1,6 +1,7 @@
 import Navbar from '../../../components/Navbar';
 import prisma from '@/lib/prisma';
 
+export const revalidate = 0;
 export default async function Hakkimizda() {
   const content = await prisma.content.findFirst();
 
