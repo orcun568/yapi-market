@@ -1,24 +1,23 @@
 "use client";
-import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import Navbar from '../../../components/Navbar';
 
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import Navbar from "../../../components/Navbar";
 
-
-export default function PaymentPage() {
-  const [cardNumber, setCardNumber] = useState('');
-  const [cardHolder, setCardHolder] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
-  const [cvc, setCvc] = useState('');
+export default function PaymentClient() {
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardHolder, setCardHolder] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvc, setCvc] = useState("");
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState('');
-  const [addressId, setAddressId] = useState('');
+  const [message, setMessage] = useState("");
+  const [addressId, setAddressId] = useState("");
 
   const router = useRouter();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const address = searchParams.get('addressId');
+    const address = searchParams.get("addressId");
     if (address) {
       setAddressId(address);
     }
@@ -26,28 +25,28 @@ export default function PaymentPage() {
 
   const handlePayment = async () => {
     setLoading(true);
-    setMessage('');
+    setMessage("");
 
     if (!cardNumber || !cardHolder || !expiryDate || !cvc) {
-      setMessage('Lütfen tüm alanları doldurun.');
+      setMessage("Lütfen tüm alanları doldurun.");
       setLoading(false);
       return;
     }
 
     try {
-      const res = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           addressId: addressId,
-          paymentMethod: 'online',
+          paymentMethod: "online",
         }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.message || 'Sipariş oluşturulamadı.');
+        throw new Error(data.message || "Sipariş oluşturulamadı.");
       }
 
       router.push(`/order-success?orderId=${data.orderId}`);
@@ -62,7 +61,9 @@ export default function PaymentPage() {
     <div className="bg-gray-100 min-h-screen">
       <Navbar />
       <div className="max-w-md w-full mx-auto px-4 py-8 mt-10 bg-white shadow-lg rounded-xl">
-        <h1 className="text-2xl font-bold text-center text-green-600 mb-6">Online Ödeme</h1>
+        <h1 className="text-2xl font-bold text-center text-green-600 mb-6">
+          Online Ödeme
+        </h1>
 
         <div className="space-y-5 text-green-700">
           <div>
@@ -118,7 +119,7 @@ export default function PaymentPage() {
             disabled={loading}
             className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? 'Ödeme İşleniyor...' : 'Ödemeyi Tamamla'}
+            {loading ? "Ödeme İşleniyor..." : "Ödemeyi Tamamla"}
           </button>
 
           {message && (
